@@ -11,6 +11,7 @@ AgentBay 与 Phone Agent 集成示例
 
 import os
 import time
+import subprocess
 
 from agentbay import AgentBay, CreateSessionParams
 
@@ -103,6 +104,23 @@ def launch_agentbay_task():
         device_id = device_info.device_id
         print(f"✅ Device ID: {device_id}")
         print(f"✅ Device status: {device_info.status}")
+
+        # Enable ADB keyboard IME
+        print("\n⌨️  Enabling ADB keyboard IME...")
+        try:
+            adb_prefix = ["adb", "-s", device_id] if device_id else ["adb"]
+            result = subprocess.run(
+                adb_prefix + ["shell", "ime", "enable", "com.android.adbkeyboard/.AdbIME"],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+            if result.returncode == 0:
+                print("✅ ADB keyboard IME enabled")
+            else:
+                print(f"⚠️  Warning: Failed to enable ADB keyboard IME: {result.stderr}")
+        except Exception as e:
+            print(f"⚠️  Warning: Error enabling ADB keyboard IME: {e}")
 
         # Find current app
         current_app = get_current_app(device_id)
