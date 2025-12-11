@@ -6,6 +6,16 @@
 
 - `phone_agent_integration.py`: 演示如何通过 AgentBay 创建远程设备会话，并使用 Phone Agent 执行自动化任务
 
+## 🔑 API Key 设置
+
+### 步骤 1: 获取 API Key
+
+1. 注册 [https://aliyun.com](https://aliyun.com)
+
+2. 访问 [AgentBay 控制台](https://agentbay.console.aliyun.com/service-management)
+
+3. 创建并复制您的 API Key
+
 ## 前置要求
 
 ### 1. 安装依赖
