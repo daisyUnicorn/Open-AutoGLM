@@ -13,14 +13,11 @@ import os
 import time
 
 from agentbay import AgentBay, CreateSessionParams
-from dotenv import load_dotenv
 
 from phone_agent import PhoneAgent
 from phone_agent.adb import ADBConnection, get_current_app
 from phone_agent.agent import AgentConfig
 from phone_agent.model import ModelConfig
-
-load_dotenv()
 
 
 def launch_agentbay_task():
